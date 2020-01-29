@@ -1,16 +1,13 @@
 import eel
-
+import os
 eel.init('front-end')
 
-
 @eel.expose
-def add(num1, num2):
-    return int(num1) + int(num2)
-
-
-@eel.expose
-def subtract(num1, num2):
-    return int(num1) - int(num2)
-
+def listfiles(path):
+    folders = list()
+    for r, d, f in os.walk(str(path)):
+        for folder in d:
+            folders.append(os.path.join(r, folder))
+    return folders
 
 eel.start('index.html', size=(1000, 600))

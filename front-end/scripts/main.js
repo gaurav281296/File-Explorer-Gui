@@ -1,8 +1,14 @@
 function operate(operator) {
-	var num1 = document.querySelector('#num-1').value;
-	var num2 = document.querySelector('#num-2').value;
-	resultLambda = operator(num1, num2);
+	var path = document.querySelector('#path').value;
+	resultLambda = operator(path);
 	resultLambda(result => {
-		document.querySelector('#output').innerText = result;
+		ul = document.createElement('ul');
+		document.getElementById('output').appendChild(ul);
+		result.forEach(function (res) {
+			let li = document.createElement('li');
+			ul.appendChild(li);
+			li.innerHTML += res;
+		});
+		//document.querySelector('#output').innerText = result;
 	});
 }
