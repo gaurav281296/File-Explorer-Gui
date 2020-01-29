@@ -4,10 +4,11 @@ eel.init('front-end')
 
 @eel.expose
 def listfiles(path):
-    folders = list()
-    for r, d, f in os.walk(str(path)):
-        for folder in d:
-            folders.append(os.path.join(r, folder))
-    return folders
+    print(os.getcwd())
+    listOfFiles = list()
+    for root, directories, files in os.walk(str(path)):
+        for directory in directories:
+            listOfFiles.append(os.path.join(root, directory))
+    return listOfFiles
 
 eel.start('index.html', size=(1000, 600))
